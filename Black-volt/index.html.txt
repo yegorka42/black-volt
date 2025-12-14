@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black-Volt - Электромонтажные работы</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo floating">
+                    <h1>BLACK-VOLT</h1>
+                    <span>Профессиональный электромонтаж</span>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#about">О компании</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="contact-phone">
+                    <a href="tel:+79001234567">+7 (900) 123-45-67</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Профессиональный электромонтаж</h2>
+                    <p>Надежные и безопасные электромонтажные работы для вашего дома и бизнеса</p>
+                    <div class="hero-features">
+                        <div class="feature-item neon-border">
+                            <i class="fas fa-bolt"></i>
+                            <span>Быстрый монтаж</span>
+                        </div>
+                        <div class="feature-item neon-border">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Гарантия качества</span>
+                        </div>
+                        <div class="feature-item neon-border">
+                            <i class="fas fa-clock"></i>
+                            <span>Соблюдение сроков</span>
+                        </div>
+                    </div>
+                    <button class="cta-button">Получить консультацию</button>
+                </div>
+                <div class="hero-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-bolt fa-5x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Электромонтаж в квартирах</h3>
+                    <p>Полный комплекс электромонтажных работ в квартирах и жилых помещениях</p>
+                    <ul>
+                        <li>Разводка электрики</li>
+                        <li>Установка розеток и выключателей</li>
+                        <li>Монтаж освещения</li>
+                        <li>Установка щитков</li>
+                    </ul>
+                    <button class="service-button">Подробнее</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Электромонтаж в офисах</h3>
+                    <p>Профессиональный электромонтаж для коммерческих помещений</p>
+                    <ul>
+                        <li>Офисные электросети</li>
+                        <li>Серверные комнаты</li>
+                        <li>Системы освещения</li>
+                        <li>Электрические щиты</li>
+                    </ul>
+                    <button class="service-button">Подробнее</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Промышленный электромонтаж</h3>
+                    <p>Сложные электромонтажные работы на промышленных объектах</p>
+                    <ul>
+                        <li>Промышленные электросети</li>
+                        <li>Монтаж оборудования</li>
+                        <li>Силовые кабели</li>
+                        <li>Автоматизация</li>
+                    </ul>
+                    <button class="service-button">Подробнее</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Электроремонт</h3>
+                    <p>Ремонт и обслуживание электрических систем любой сложности</p>
+                    <ul>
+                        <li>Диагностика неисправностей</li>
+                        <li>Ремонт электропроводки</li>
+                        <li>Замена оборудования</li>
+                        <li>Техническое обслуживание</li>
+                    </ul>
+                    <button class="service-button">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Почему выбирают Black-Volt</h2>
+                    <p>Мы - команда профессиональных электромонтажников с многолетним опытом работы. Наша цель - обеспечить безопасность и надежность электроснабжения вашего объекта.</p>
+                    
+                    <div class="advantages">
+                        <div class="advantage-item">
+                            <div class="advantage-number">10+</div>
+                            <div class="advantage-text">
+                                <h4>Лет опыта</h4>
+                                <p>Более 10 лет на рынке электромонтажных услуг</p>
+                            </div>
+                        </div>
+
+                        <div class="advantage-item">
+                            <div class="advantage-number">500+</div>
+                            <div class="advantage-text">
+                                <h4>Выполненных проектов</h4>
+                                <p>Успешно реализованных объектов различной сложности</p>
+                            </div>
+                        </div>
+
+                        <div class="advantage-item">
+                            <div class="advantage-number">24/7</div>
+                            <div class="advantage-text">
+                                <h4>Поддержка клиентов</h4>
+                                <p>Круглосуточная поддержка и экстренные выезды</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="certificates">
+                        <h4>Наши сертификаты и допуски</h4>
+                        <div class="certificate-icons">
+                            <i class="fas fa-certificate fa-2x"></i>
+                            <i class="fas fa-award fa-2x"></i>
+                            <i class="fas fa-shield-check fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-users fa-5x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contacts-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Телефон</h4>
+                            <a href="tel:+79001234567">+7 (900) 123-45-67</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:info@black-volt.ru">info@black-volt.ru</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Адрес</h4>
+                            <p>г. Москва, ул. Ленина, д. 123</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Режим работы</h4>
+                            <p>Пн-Вс: 8:00 - 20:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Оставить заявку</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Ваш телефон" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Выберите услугу</option>
+                                <option value="apartment">Электромонтаж в квартире</option>
+                                <option value="office">Электромонтаж в офисе</option>
+                                <option value="industrial">Промышленный электромонтаж</option>
+                                <option value="repair">Электроремонт</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Комментарий" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <h3>BLACK-VOLT</h3>
+                        <span>Профессиональный электромонтаж</span>
+                    </div>
+                    <p>Надежные и безопасные электромонтажные работы для вашего дома и бизнеса</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Услуги</h4>
+                    <ul>
+                        <li><a href="#">Электромонтаж в квартирах</a></li>
+                        <li><a href="#">Электромонтаж в офисах</a></li>
+                        <li><a href="#">Промышленный электромонтаж</a></li>
+                        <li><a href="#">Электроремонт</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="tel:+79001234567">+7 (900) 123-45-67</a></li>
+                        <li><a href="mailto:info@black-volt.ru">info@black-volt.ru</a></li>
+                        <li>г. Москва, ул. Ленина, д. 123</li>
+                        <li>Пн-Вс: 8:00 - 20:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Black-Volt. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
