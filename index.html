@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Volt | Электромонтаж в Кемерово</title>
-    <meta name="description" content="Профессиональный электромонтаж, умный дом, замена проводки под ключ в Кемерово.">
+    <title>Black-Volt | Электромонтажные работы в Кемерово</title>
+    <meta name="description" content="Профессиональные электромонтажные работы. Умный дом, проводка под ключ, сборка щитов. г. Кемерово.">
+    
     <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <!-- Иконки -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --primary-gold: #D4AF37;
-            --primary-copper: #B87333;
-            --accent-neon: #00f3ff;
-            --bg-dark: #0a0a0a;
-            --bg-card: #161616;
-            --text-light: #ffffff;
-            --text-gray: #b0b0b0;
+            --primary-gold-light: #F4CF57;
+            --dark-bg: #121212;
+            --card-bg: #1E1E1E;
+            --text-main: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent-gradient: linear-gradient(135deg, #D4AF37 0%, #F4CF57 50%, #D4AF37 100%);
         }
 
         * {
@@ -29,195 +33,203 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            overflow-x: hidden;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             text-transform: uppercase;
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
 
-        /* --- Анимированный фон (LED эффект) --- */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
-            overflow: hidden;
-        }
-
-        .led-strip {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 40%),
-                        radial-gradient(circle at 80% 20%, rgba(0, 243, 255, 0.1), transparent 30%),
-                        radial-gradient(circle at 20% 80%, rgba(184, 115, 51, 0.1), transparent 30%);
-            animation: pulseLight 10s infinite alternate ease-in-out;
-            filter: blur(40px);
-        }
-
-        @keyframes pulseLight {
-            0% { transform: scale(1) rotate(0deg); opacity: 0.5; }
-            100% { transform: scale(1.1) rotate(5deg); opacity: 0.8; }
-        }
-
-        /* --- Header & Logo --- */
+        /* --- Header --- */
         header {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
+            background: rgba(18, 18, 18, 0.95);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 24px;
             font-weight: 900;
-            background: linear-gradient(45deg, var(--primary-gold), var(--primary-copper), #fff, var(--primary-gold));
-            background-size: 200% auto;
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
-            letter-spacing: 2px;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
+            letter-spacing: 1px;
+            text-shadow: 0px 0px 10px rgba(212, 175, 55, 0.3);
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 30px;
         }
 
         .nav-links a {
+            font-size: 14px;
             font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-light);
+            color: var(--text-main);
+            text-transform: uppercase;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--primary-gold);
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-gold);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
         /* Mobile Menu */
-        .burger { display: none; cursor: pointer; font-size: 1.5rem; }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                right: 0;
-                width: 100%;
-                background: rgba(10, 10, 10, 0.95);
-                text-align: center;
-                padding: 20px 0;
-                border-bottom: 1px solid var(--primary-gold);
-            }
-            .nav-links.active { display: flex; }
-            .burger { display: block; }
+        .burger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--primary-gold);
         }
 
         /* --- Hero Section --- */
         .hero {
-            height: 90vh;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            background: radial-gradient(circle at center, #2a2a2a 0%, #121212 100%);
             position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        /* Анимация фона (LED эффект) */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent 0%, rgba(212, 175, 55, 0.05) 20%, transparent 40%, rgba(212, 175, 55, 0.05) 60%, transparent 80%, rgba(212, 175, 55, 0.05) 100%);
+            animation: rotateLED 10s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes rotateLED {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 48px;
             margin-bottom: 20px;
-            line-height: 1.1;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .hero-span {
+        .hero h1 span {
             color: var(--primary-gold);
         }
 
-        .btn-main {
-            padding: 15px 40px;
-            background: linear-gradient(45deg, var(--primary-gold), var(--primary-copper));
-            color: #000;
-            font-weight: 700;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
         }
 
-        .btn-main:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-        }
-
-        /* --- Contact Buttons (Messengers) --- */
-        .contact-grid {
+        /* Кнопки мессенджеров в ряд */
+        .messenger-group {
             display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
             justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
 
-        .messenger-btn {
+        .btn-messenger {
             display: flex;
             align-items: center;
             gap: 10px;
             padding: 12px 25px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: transform 0.2s;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .messenger-btn:hover { transform: scale(1.05); }
+        .btn-messenger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
 
-        .btn-tg { background: #229ED9; color: white; }
-        .btn-wa { background: #25D366; color: white; }
-        .btn-max { background: var(--primary-gold); color: black; }
+        .btn-tg { background: #0088cc; }
+        .btn-wa { background: #25D366; }
+        .btn-phone { 
+            background: var(--accent-gradient); 
+            color: #121212;
+        }
 
-        /* --- Sections General --- */
-        section {
-            padding: 80px 5%;
+        .hero-address {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* --- Services & Smart Home --- */
+        .section {
+            padding: 80px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            font-size: 36px;
+            margin-bottom: 60px;
             position: relative;
             display: inline-block;
             left: 50%;
@@ -228,56 +240,61 @@
             content: '';
             display: block;
             width: 60px;
-            height: 4px;
+            height: 3px;
             background: var(--primary-gold);
-            margin: 10px auto 0;
-            border-radius: 2px;
+            margin: 15px auto 0;
         }
 
-        /* --- Smart Home --- */
-        .smart-home-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .card {
-            background: var(--bg-card);
+            background: var(--card-bg);
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 10px;
             border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
             text-align: center;
         }
 
         .card:hover {
+            transform: translateY(-10px);
             border-color: var(--primary-gold);
-            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .card i {
-            font-size: 3rem;
+            font-size: 40px;
             color: var(--primary-gold);
             margin-bottom: 20px;
         }
 
-        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
-        .card p { color: var(--text-gray); font-size: 0.95rem; }
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
 
         /* --- Price Table --- */
-        .table-container {
+        .price-table-wrapper {
             overflow-x: auto;
-            background: var(--bg-card);
-            border-radius: 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px;
+            min-width: 600px; /* Чтобы на мобильном скроллилось */
         }
 
         th, td {
@@ -291,23 +308,27 @@
             color: var(--primary-gold);
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 14px;
         }
 
-        tr:last-child td { border-bottom: none; }
-        tr:hover { background: rgba(255,255,255,0.02); }
-        
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
         .price-col {
             font-weight: 700;
             color: var(--primary-gold);
-            font-size: 1.1rem;
-            text-align: right !important;
+            white-space: nowrap;
         }
 
         /* --- Footer --- */
         footer {
-            background: #000;
-            padding: 50px 5% 20px;
+            background: #0a0a0a;
+            padding: 50px 0 20px;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
@@ -321,270 +342,344 @@
         .footer-col h4 {
             color: var(--primary-gold);
             margin-bottom: 20px;
-            font-size: 1.2rem;
+            font-size: 18px;
         }
 
-        .footer-col p, .footer-col li {
-            color: var(--text-gray);
+        .footer-col p, .footer-col a {
+            color: var(--text-secondary);
             margin-bottom: 10px;
-            font-size: 0.95rem;
+            display: block;
+            font-size: 14px;
         }
 
-        .social-icons a {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            color: var(--text-light);
+        .footer-col a:hover {
+            color: var(--primary-gold);
         }
-        .social-icons a:hover { color: var(--primary-gold); }
 
         .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.05);
             color: #555;
-            font-size: 0.8rem;
+            font-size: 12px;
         }
 
-        /* Floating Button Mobile */
-        .float-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary-gold);
-            color: #000;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            z-index: 2000;
-            animation: pulseBtn 2s infinite;
-        }
-
-        @keyframes pulseBtn {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
-
+        /* --- Mobile Adaptivity --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .section-title { font-size: 2rem; }
-            .contact-grid { flex-direction: column; width: 100%; }
-            .messenger-btn { justify-content: center; width: 100%; }
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 100vh;
+                top: 0;
+                background: var(--card-bg);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.nav-active {
+                transform: translateX(0%);
+            }
+
+            .burger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .messenger-group {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            
+            .btn-messenger {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+            
+            th, td {
+                padding: 10px 5px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Анимированный фон -->
-    <div class="animated-bg">
-        <div class="led-strip"></div>
-    </div>
-
-    <!-- Шапка -->
+    <!-- Header -->
     <header>
-        <div class="logo">BLACK VOLT</div>
-        <div class="burger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
+        <div class="container nav-wrapper">
+            <div class="logo">BLACK VOLT</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#smart-home">Умный дом</a></li>
+                    <li><a href="#price">Прайс</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-        <nav class="nav-links" id="navLinks">
-            <a href="#home" onclick="toggleMenu()">Главная</a>
-            <a href="#smart-home" onclick="toggleMenu()">Умный дом</a>
-            <a href="#price" onclick="toggleMenu()">Прайс</a>
-            <a href="#contacts" onclick="toggleMenu()">Контакты</a>
-        </nav>
     </header>
 
-    <!-- Главный экран -->
-    <section class="hero" id="home">
-        <h1>ЭЛЕКТРОМОНТАЖ <br><span class="hero-span">НОВОГО ПОКОЛЕНИЯ</span></h1>
-        <p>Кемерово. Профессионально. Безопасно. Современный подход к электрике и умному дому.</p>
-        
-        <a href="#contacts" class="btn-main">Заказать расчет</a>
-
-        <div class="contact-grid">
-            <a href="https://t.me/yegor2297" target="_blank" class="messenger-btn btn-tg">
-                <i class="fab fa-telegram-plane"></i> Telegram
-            </a>
-            <a href="https://wa.me/79990000000" target="_blank" class="messenger-btn btn-wa">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-            <a href="tel:+79990000000" class="messenger-btn btn-max">
-                <i class="fas fa-phone-alt"></i> Позвонить Макс
-            </a>
-        </div>
-    </section>
-
-    <!-- Умный дом -->
-    <section id="smart-home">
-        <h2 class="section-title">УМНЫЙ ДОМ</h2>
-        <div class="smart-home-grid">
-            <div class="card">
-                <i class="fas fa-video"></i>
-                <h3>Видеонаблюдение</h3>
-                <p>Установка камер с доступом со смартфона. Контроль безопасности 24/7 из любой точки мира.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ЭЛЕКТРОМОНТАЖ <br><span>ЛЮБОЙ СЛОЖНОСТИ</span></h1>
+            <p>Профессиональный подход. Гарантия качества. Современные решения.</p>
+            
+            <!-- Мессенджеры в ряд -->
+            <div class="messenger-group">
+                <!-- ЗАМЕНИ НОМЕР ТЕЛЕФОНА НИЖЕ В href="tel:..." и в тексте -->
+                <a href="tel:+79990000000" class="btn-messenger btn-phone">
+                    <i class="fas fa-phone-alt"></i> Позвонить Максу
+                </a>
+                <!-- ЗАМЕНИ НОМЕР WHATSAPP (без +) -->
+                <a href="https://wa.me/79990000000" target="_blank" class="btn-messenger btn-wa">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <!-- Вставь свой юзернейм телеграм вместо username -->
+                <a href="https://t.me/username" target="_blank" class="btn-messenger btn-tg">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
             </div>
-            <div class="card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Управление светом</h3>
-                <p>Диммеры, проходные выключатели, управление голосом и со смартфона. Сценарии освещения.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-thermometer-half"></i>
-                <h3>Климат и Датчики</h3>
-                <p>Автоматическое управление теплым полом, кондиционерами и датчиками протечки/дыма.</p>
+
+            <div class="hero-address">
+                <i class="fas fa-map-marker-alt" style="color: var(--primary-gold);"></i>
+                г. Кемерово, ул. Спортивная 28, офис 501
             </div>
         </div>
     </section>
 
-    <!-- Прайс-лист -->
-    <section id="price">
-        <h2 class="section-title">СТОИМОСТЬ РАБОТ</h2>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Вид работы</th>
-                        <th>Ед.</th>
-                        <th>Цена</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Замена проводки под ключ — 1-комнатная</td>
-                        <td>фикс</td>
-                        <td class="price-col">22 000 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Замена проводки под ключ — 2-комнатная</td>
-                        <td>фикс</td>
-                        <td class="price-col">32 000 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Замена проводки под ключ — 3-комнатная</td>
-                        <td>фикс</td>
-                        <td class="price-col">45 000 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Прокладка кабеля в штробе / гофре</td>
-                        <td>м.п.</td>
-                        <td class="price-col">150 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Штробление в бетоне</td>
-                        <td>м.п.</td>
-                        <td class="price-col">300 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Установка автомата / УЗО</td>
-                        <td>шт</td>
-                        <td class="price-col">700 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Сборка щита</td>
-                        <td>фикс</td>
-                        <td class="price-col">2 000 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Подключение кабеля к щиту</td>
-                        <td>точка</td>
-                        <td class="price-col">1 500 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Силовая розетка (плита, духовка)</td>
-                        <td>шт</td>
-                        <td class="price-col">700 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Установка розетки / выключателя (готовое)</td>
-                        <td>шт</td>
-                        <td class="price-col">400 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Перенос розетки</td>
-                        <td>шт</td>
-                        <td class="price-col">2 000 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Установка розетки с нуля (штробление)</td>
-                        <td>шт</td>
-                        <td class="price-col">1 500 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Установка люстры</td>
-                        <td>шт</td>
-                        <td class="price-col">1 200 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Установка бра</td>
-                        <td>шт</td>
-                        <td class="price-col">800 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Точечный светильник</td>
-                        <td>шт</td>
-                        <td class="price-col">600 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>Светодиодная лента</td>
-                        <td>м.п.</td>
-                        <td class="price-col">250 ₽</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Контакты и Футер -->
-    <footer id="contacts">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>BLACK VOLT</h4>
-                <p>Профессиональный электромонтаж любой сложности. Гарантия качества и безопасности.</p>
-                <div class="social-icons" style="margin-top: 20px;">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-vk"></i></a>
+    <!-- Services -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Наши Услуги</h2>
+            <div class="services-grid">
+                <div class="card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Проводка под ключ</h3>
+                    <p>Полная замена электрики в квартирах и домах. Штробление, укладка кабеля, установка подрозетников.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Сборка щитов</h3>
+                    <p>Профессиональная сборка электрощитов любой сложности. Установка автоматов, УЗО, реле напряжения.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Освещение</h3>
+                    <p>Монтаж люстр, бра, точечных светильников и светодиодных лент. Дизайн подсветки.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-plug"></i>
+                    <h3>Розетки и выключатели</h3>
+                    <p>Перенос, замена и установка новых точек. Силовые розетки для плит и духовок.</p>
                 </div>
             </div>
-            
-            <div class="footer-col">
-                <h4>Контакты</h4>
-                <p><i class="fas fa-map-marker-alt" style="color:var(--primary-gold)"></i> г. Кемерово, ул. Спортивная 28, офис 501</p>
-                <p><i class="fas fa-envelope" style="color:var(--primary-gold)"></i> yegor2297@gmail.com</p>
-                <p><i class="fas fa-phone" style="color:var(--primary-gold)"></i> +7 (999) 000-00-00 (Макс)</p>
-            </div>
+        </div>
+    </section>
 
-            <div class="footer-col">
-                <h4>Режим работы</h4>
-                <p>Пн-Пт: 09:00 - 18:00</p>
-                <p>Сб-Вс: По записи</p>
-                <p style="color: var(--primary-gold); font-weight: bold; margin-top: 10px;">Выезд на замер - Бесплатно!</p>
+    <!-- Smart Home -->
+    <section id="smart-home" class="section" style="background: #181818;">
+        <div class="container">
+            <h2 class="section-title">Умный Дом</h2>
+            <div class="services-grid">
+                <div class="card">
+                    <i class="fas fa-video"></i>
+                    <h3>Видеонаблюдение</h3>
+                    <p>Установка камер с доступом через телефон. Контроль безопасности 24/7.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Датчики и Автоматика</h3>
+                    <p>Датчики движения, протечки, открытия дверей. Сценарии освещения.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h3>Голосовое управление</h3>
+                    <p>Интеграция с Алисой и другими системами. Управление светом и техникой голосом.</p>
+                </div>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2024 Black Volt. Все права защищены.
+    </section>
+
+    <!-- Price List -->
+    <section id="price" class="section">
+        <div class="container">
+            <h2 class="section-title">Прайс-лист</h2>
+            <div class="price-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Вид работы</th>
+                            <th>Ед.</th>
+                            <th>Цена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Замена проводки под ключ — 1-комнатная</td>
+                            <td>фикс</td>
+                            <td class="price-col">22 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Замена проводки под ключ — 2-комнатная</td>
+                            <td>фикс</td>
+                            <td class="price-col">32 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Замена проводки под ключ — 3-комнатная</td>
+                            <td>фикс</td>
+                            <td class="price-col">45 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Силовая розетка (плита, духовка)</td>
+                            <td>шт</td>
+                            <td class="price-col">700 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Прокладка кабеля в штробе</td>
+                            <td>м.п.</td>
+                            <td class="price-col">150 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Прокладка кабеля в гофре / кабель-канале</td>
+                            <td>м.п.</td>
+                            <td class="price-col">150 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Штробление в бетоне</td>
+                            <td>м.п.</td>
+                            <td class="price-col">300 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Установка автомата / УЗО</td>
+                            <td>шт</td>
+                            <td class="price-col">700 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Установка и сборка щита</td>
+                            <td>фикс</td>
+                            <td class="price-col">2 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Подключение кабеля к щиту</td>
+                            <td>точка</td>
+                            <td class="price-col">1 500 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Перенос розетки</td>
+                            <td>шт</td>
+                            <td class="price-col">2 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Установка розетки / выключателя с нуля (штробление)</td>
+                            <td>шт</td>
+                            <td class="price-col">1 500 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Замена розетки / выключателя (готовое место)</td>
+                            <td>шт</td>
+                            <td class="price-col">400 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Установка люстры</td>
+                            <td>шт</td>
+                            <td class="price-col">1 200 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Установка бра</td>
+                            <td>шт</td>
+                            <td class="price-col">800 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Установка точечного светильника</td>
+                            <td>шт</td>
+                            <td class="price-col">600 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Светодиодная лента</td>
+                            <td>м.п.</td>
+                            <td class="price-col">250 ₽</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Black-Volt</h4>
+                    <p>Профессиональный электромонтаж в Кемерово и области.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Кемерово, ул. Спортивная 28, офис 501</p>
+                    <!-- ЗАМЕНИ НОМЕР -->
+                    <p><i class="fas fa-phone"></i> <a href="tel:+79990000000">+7 (999) 000-00-00 (Макс)</a></p>
+                    <p><i class="fas fa-envelope"></i> yegor2297@gmail.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Мы в соцсетях</h4>
+                    <a href="https://t.me/username">Telegram</a>
+                    <a href="https://wa.me/79990000000">WhatsApp</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Black-Volt. Все права защищены.
+            </div>
         </div>
     </footer>
 
-    <!-- Плавающая кнопка -->
-    <a href="tel:+79990000000" class="float-btn">
-        <i class="fas fa-phone"></i>
-    </a>
-
     <script>
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            nav.classList.toggle('active');
-        }
+        // Мобильное меню
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            
+            // Анимация ссылок
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            
+            // Анимация бургера
+            burger.classList.toggle('toggle');
+        });
 
         // Плавный скролл
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                nav.classList.remove('nav-active'); // Закрыть меню при клике
+                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
