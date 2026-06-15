@@ -1,690 +1,1019 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black-Volt | Электромонтажные работы в Кемерово</title>
-    <meta name="description" content="Профессиональные электромонтажные работы. Умный дом, проводка под ключ, сборка щитов. г. Кемерово.">
-    
-    <!-- Шрифты -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- Иконки -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black-Volt | Электромонтажные работы в Кемерово</title>
+<meta name="description" content="Профессиональные электромонтажные работы. Умный дом, проводка под ключ, сборка щитов. г. Кемерово.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        :root {
-            --primary-gold: #D4AF37;
-            --primary-gold-light: #F4CF57;
-            --dark-bg: #121212;
-            --card-bg: #1E1E1E;
-            --text-main: #FFFFFF;
-            --text-secondary: #B0B0B0;
-            --accent-gradient: linear-gradient(135deg, #D4AF37 0%, #F4CF57 50%, #D4AF37 100%);
-        }
+<style>
+  :root {
+    --black: #080808;
+    --black2: #111111;
+    --card: #141414;
+    --border: rgba(255,255,255,0.06);
+    --gold: #FFD700;
+    --gold2: #FFA500;
+    --white: #FFFFFF;
+    --gray: #888888;
+    --gray2: #555555;
+    --glow: rgba(255, 215, 0, 0.15);
+    --glow-strong: rgba(255, 215, 0, 0.35);
+  }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  html { scroll-behavior: smooth; }
 
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
 
-        /* --- Header --- */
-        header {
-            background: rgba(18, 18, 18, 0.95);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(10px);
-        }
+  /* ===== CURSOR GLOW ===== */
+  .cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,215,0,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: transform 0.1s;
+  }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+  /* ===== HEADER ===== */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0 40px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(8,8,8,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
 
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  header.scrolled {
+    background: rgba(8,8,8,0.95);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-            text-shadow: 0px 0px 10px rgba(212, 175, 55, 0.3);
-        }
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
+  .logo-bolt {
+    color: var(--gold);
+    font-size: 20px;
+    animation: boltPulse 2s ease-in-out infinite;
+  }
 
-        .nav-links a {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-main);
-            text-transform: uppercase;
-            position: relative;
-        }
+  @keyframes boltPulse {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px var(--gold)); }
+    50% { opacity: 0.6; filter: drop-shadow(0 0 2px var(--gold)); }
+  }
 
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
+  .logo-black { color: var(--white); }
+  .logo-volt { color: var(--gold); }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: var(--primary-gold);
-            transition: 0.3s;
-        }
+  nav { display: flex; align-items: center; gap: 36px; }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+  nav a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
 
-        /* Mobile Menu */
-        .burger {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: var(--primary-gold);
-        }
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
 
-        /* --- Hero Section --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #2a2a2a 0%, #121212 100%);
-            position: relative;
-            padding-top: 80px;
-            overflow: hidden;
-        }
+  nav a:hover { color: var(--white); }
+  nav a:hover::after { width: 100%; }
 
-        /* Анимация фона (LED эффект) */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent 0%, rgba(212, 175, 55, 0.05) 20%, transparent 40%, rgba(212, 175, 55, 0.05) 60%, transparent 80%, rgba(212, 175, 55, 0.05) 100%);
-            animation: rotateLED 10s linear infinite;
-            z-index: 0;
-        }
+  .burger { display: none; cursor: pointer; color: var(--gold); font-size: 22px; }
 
-        @keyframes rotateLED {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 40px 60px;
+  }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 20px;
-        }
+  /* Сетка фона */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
+  /* Центральное свечение */
+  .hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 65%);
+    animation: glowPulse 4s ease-in-out infinite;
+  }
 
-        .hero h1 span {
-            color: var(--primary-gold);
-        }
+  @keyframes glowPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.7; }
+  }
 
-        .hero p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-        }
+  /* Частицы */
+  .particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
 
-        /* Кнопки мессенджеров в ряд */
-        .messenger-group {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+    opacity: 0;
+  }
 
-        .btn-messenger {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 16px;
-            text-transform: uppercase;
-            transition: transform 0.3s, box-shadow 0.3s;
-            color: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-100px) scale(1); opacity: 0; }
+  }
 
-        .btn-messenger:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-        }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+  }
 
-        .btn-tg { background: #0088cc; }
-        .btn-wa { background: #25D366; }
-        .btn-phone { 
-            background: var(--accent-gradient); 
-            color: #121212;
-        }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    background: rgba(255,215,0,0.05);
+    backdrop-filter: blur(10px);
+  }
 
-        .hero-address {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: dotBlink 1.5s ease-in-out infinite;
+  }
 
-        /* --- Services & Smart Home --- */
-        .section {
-            padding: 80px 0;
-        }
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
 
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 60px;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+  .hero h1 {
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-gold);
-            margin: 15px auto 0;
-        }
+  .hero h1 .line1 { display: block; color: var(--white); }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+  .hero h1 .line2 {
+    display: block;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 50%, var(--gold) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s linear infinite;
+  }
 
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-            text-align: center;
-        }
+  @keyframes gradientShift {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--gray);
+    font-weight: 300;
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
 
-        .card i {
-            font-size: 40px;
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-        }
+  .hero-sub strong { color: var(--white); font-weight: 500; }
 
-        .card h3 {
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
+  .cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
 
-        .card p {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.25s;
+    cursor: pointer;
+    border: none;
+  }
 
-        /* --- Price Table --- */
-        .price-table-wrapper {
-            overflow-x: auto;
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
+  .btn-primary {
+    background: var(--gold);
+    color: #080808;
+    box-shadow: 0 0 0 rgba(255,215,0,0.4);
+  }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px; /* Чтобы на мобильном скроллилось */
-        }
+  .btn-primary:hover {
+    background: #FFE44D;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255,215,0,0.35);
+  }
 
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--border);
+  }
 
-        th {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--primary-gold);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
+  .btn-ghost:hover {
+    border-color: rgba(255,215,0,0.4);
+    background: rgba(255,215,0,0.05);
+    transform: translateY(-2px);
+  }
 
-        tr:last-child td {
-            border-bottom: none;
-        }
+  .btn-wa {
+    background: #1a1a1a;
+    color: #25D366;
+    border: 1px solid rgba(37,211,102,0.2);
+  }
 
-        tr:hover {
-            background: rgba(255,255,255,0.02);
-        }
+  .btn-wa:hover {
+    background: rgba(37,211,102,0.08);
+    border-color: rgba(37,211,102,0.5);
+    transform: translateY(-2px);
+  }
 
-        .price-col {
-            font-weight: 700;
-            color: var(--primary-gold);
-            white-space: nowrap;
-        }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
 
-        /* --- Footer --- */
-        footer {
-            background: #0a0a0a;
-            padding: 50px 0 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--gray2);
+  }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+  .hero-meta-item i { color: var(--gold); font-size: 12px; }
 
-        .footer-col h4 {
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
+  /* ===== STATS ===== */
+  .stats {
+    padding: 60px 40px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--black2);
+  }
 
-        .footer-col p, .footer-col a {
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            display: block;
-            font-size: 14px;
-        }
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
 
-        .footer-col a:hover {
-            color: var(--primary-gold);
-        }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
 
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #555;
-            font-size: 12px;
-        }
+  .stat-label {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
 
-        /* --- Mobile Adaptivity --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                right: 0px;
-                height: 100vh;
-                top: 0;
-                background: var(--card-bg);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 70%;
-                transform: translateX(100%);
-                transition: transform 0.3s ease-in;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-            }
+  /* ===== SECTION ===== */
+  .section {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-            .nav-links.nav-active {
-                transform: translateX(0%);
-            }
+  .section-full { max-width: 100%; padding: 100px 0; }
+  .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-            .burger {
-                display: block;
-                z-index: 1001;
-            }
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
 
-            .hero h1 {
-                font-size: 32px;
-            }
+  .section-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
 
-            .messenger-group {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-            
-            .btn-messenger {
-                justify-content: center;
-                width: 100%;
-            }
+  .section-title span {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-            .section-title {
-                font-size: 28px;
-            }
-            
-            th, td {
-                padding: 10px 5px;
-                font-size: 13px;
-            }
-        }
-    </style>
+  .section-sub {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  /* ===== GRID CARDS ===== */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+  /* Glass Card */
+  .glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255,215,0,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,215,0,0.04);
+  }
+
+  .glass-card:hover::before { opacity: 1; }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255,215,0,0.08);
+    border: 1px solid rgba(255,215,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    transition: all 0.3s;
+  }
+
+  .glass-card:hover .card-icon {
+    background: rgba(255,215,0,0.15);
+    box-shadow: 0 0 20px rgba(255,215,0,0.2);
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .card-text { font-size: 14px; color: var(--gray); line-height: 1.7; }
+
+  /* ===== SMART HOME SECTION ===== */
+  .smart-section {
+    background: var(--black2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ===== PRICE TABLE ===== */
+  .price-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .price-table-scroll { overflow-x: auto; }
+
+  table { width: 100%; border-collapse: collapse; min-width: 560px; }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+
+  tbody td {
+    padding: 15px 20px;
+    font-size: 14px;
+    color: var(--white);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody tr:hover td { background: rgba(255,215,0,0.025); }
+
+  .td-unit { color: var(--gray2); font-size: 12px; }
+
+  .td-price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--black2);
+    border-top: 1px solid var(--border);
+    padding: 80px 40px 40px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .footer-brand .logo { margin-bottom: 16px; }
+
+  .footer-brand p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 300px;
+  }
+
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .footer-col a, .footer-col p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 12px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--gold); }
+  .footer-col i { color: var(--gold2); font-size: 13px; width: 16px; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--gray2);
+  }
+
+  /* ===== PRICE TABS ===== */
+  .price-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .price-tab {
+    padding: 8px 18px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--gray);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .price-tab:hover {
+    border-color: rgba(255,215,0,0.3);
+    color: var(--white);
+  }
+
+  .price-tab.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #080808;
+    font-weight: 600;
+  }
+
+  .td-note {
+    font-size: 12px;
+    color: var(--gray2);
+  }
+
+  /* ===== REVEAL ANIMATION ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== MOBILE MENU ===== */
+  @media (max-width: 900px) {
+    header { padding: 0 20px; }
+    .burger { display: block; }
+
+    nav {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: rgba(8,8,8,0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 30px 20px;
+      gap: 24px;
+      transform: translateY(-120%);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    nav.open { transform: translateY(0); opacity: 1; }
+
+    nav a { font-size: 16px; }
+
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+    .hero { padding: 100px 20px 60px; }
+    .hero h1 { letter-spacing: -1px; }
+
+    .cta-group { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; }
+
+    .section { padding: 70px 20px; }
+    .section-inner { padding: 0 20px; }
+
+    .footer-top { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+    footer { padding: 60px 20px 30px; }
+  }
+
+  @media (max-width: 480px) {
+    .grid-4 { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .stat-num { font-size: 36px; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="container nav-wrapper">
-            <div class="logo">BLACK VOLT</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#smart-home">Умный дом</a></li>
-                    <li><a href="#price">Прайс</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
-                </ul>
-            </nav>
-            <div class="burger">
-                <i class="fas fa-bars"></i>
-            </div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="logo">
+    <span class="logo-bolt">⚡</span>
+    <span class="logo-black">BLACK</span><span class="logo-volt">VOLT</span>
+  </div>
+  <nav id="nav">
+    <a href="#home">Главная</a>
+    <a href="#services">Услуги</a>
+    <a href="#smart">Умный дом</a>
+    <a href="#price">Прайс</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <div class="burger" id="burger"><i class="fas fa-bars"></i></div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Кемерово · Работаем по всей области
+    </div>
+    <h1>
+      <span class="line1">ЭЛЕКТРОМОНТАЖ</span>
+      <span class="line2">ЛЮБОЙ СЛОЖНОСТИ</span>
+    </h1>
+    <p class="hero-sub">
+      Профессиональный подход. <strong>Гарантия качества.</strong><br>
+      Умный дом, проводка под ключ, сборка щитов.
+    </p>
+    <div class="cta-group">
+      <a href="tel:+79990000000" class="btn btn-primary">
+        <i class="fas fa-phone-alt"></i> Позвонить
+      </a>
+      <a href="https://wa.me/79990000000" target="_blank" class="btn btn-wa">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://t.me/username" target="_blank" class="btn btn-ghost">
+        <i class="fab fa-telegram-plane"></i> Telegram
+      </a>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-meta-item"><i class="fas fa-map-marker-alt"></i> ул. Спортивная 28, офис 501</span>
+      <span class="hero-meta-item"><i class="fas fa-shield-alt"></i> Официальная гарантия</span>
+      <span class="hero-meta-item"><i class="fas fa-clock"></i> Выезд день в день</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="reveal">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Лет опыта</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Объектов сдано</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Довольных клиентов</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">4й</div>
+      <div class="stat-label">Класс безопасности</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="section-eyebrow reveal">Что мы делаем</div>
+  <h2 class="section-title reveal">Наши <span>Услуги</span></h2>
+  <p class="section-sub reveal">Полный спектр электромонтажных работ — от замены розетки до проводки под ключ.</p>
+
+  <div class="grid-3">
+    <div class="glass-card reveal">
+      <h3 class="card-title">Проводка под ключ</h3>
+      <p class="card-text">Полная замена электрики в квартирах и домах. Штробление, укладка кабеля, установка подрозетников.</p>
+    </div>
+    <div class="glass-card reveal">
+      <h3 class="card-title">Сборка щитов</h3>
+      <p class="card-text">Профессиональная сборка электрощитов любой сложности. Установка автоматов, УЗО, реле напряжения.</p>
+    </div>
+    <div class="glass-card reveal">
+      <h3 class="card-title">Освещение</h3>
+      <p class="card-text">Монтаж люстр, бра, точечных светильников и светодиодных лент. Дизайн подсветки.</p>
+    </div>
+    <div class="glass-card reveal">
+      <h3 class="card-title">Розетки и выключатели</h3>
+      <p class="card-text">Перенос, замена и установка новых точек. Силовые розетки для плит и духовок.</p>
+    </div>
+    <div class="glass-card reveal">
+      <h3 class="card-title">Коммерческие объекты</h3>
+      <p class="card-text">Электромонтаж на промышленных и коммерческих объектах. Работа с документацией.</p>
+    </div>
+    <div class="glass-card reveal">
+      <h3 class="card-title">Консультация</h3>
+      <p class="card-text">Бесплатный выезд и оценка объёма работ. Составим смету и подберём оптимальное решение.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SMART HOME -->
+<div id="smart" class="smart-section section-full">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Технологии будущего</div>
+    <h2 class="section-title reveal">Умный <span>Дом</span></h2>
+    <p class="section-sub reveal">Автоматизация, видеонаблюдение и голосовое управление для вашего пространства.</p>
+
+    <div class="grid-3">
+      <div class="glass-card reveal">
+        <h3 class="card-title">Видеонаблюдение</h3>
+        <p class="card-text">Установка IP-камер с доступом через телефон. Контроль безопасности 24/7 из любой точки мира.</p>
+      </div>
+      <div class="glass-card reveal">
+        <h3 class="card-title">Датчики и Автоматика</h3>
+        <p class="card-text">Датчики движения, протечки, открытия дверей. Умные сценарии освещения и климата.</p>
+      </div>
+      <div class="glass-card reveal">
+        <h3 class="card-title">Голосовое управление</h3>
+        <p class="card-text">Интеграция с Алисой и Яндекс устройствами. Управление светом и техникой голосом.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICE -->
+<section id="price" class="section">
+  <div class="section-eyebrow reveal">Прозрачное ценообразование</div>
+  <h2 class="section-title reveal">Прайс-<span>лист</span></h2>
+  <p class="section-sub reveal">Фиксированные цены без скрытых платежей. Точная смета после выезда.</p>
+
+  <!-- Табы по категориям -->
+  <div class="price-tabs reveal">
+    <button class="price-tab active" data-cat="all">Все</button>
+    <button class="price-tab" data-cat="Проводка">Проводка</button>
+    <button class="price-tab" data-cat="Розетки и выключатели">Розетки</button>
+    <button class="price-tab" data-cat="Освещение">Освещение</button>
+    <button class="price-tab" data-cat="Щиток">Щиток</button>
+    <button class="price-tab" data-cat="Тёплый пол">Тёплый пол</button>
+    <button class="price-tab" data-cat="Оборудование">Оборудование</button>
+    <button class="price-tab" data-cat="Другое">Другое</button>
+  </div>
+
+  <div class="price-wrap reveal">
+    <div class="price-table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Вид работы</th>
+            <th>Ед.</th>
+            <th>Цена</th>
+          </tr>
+        </thead>
+        <tbody id="priceBody">
+          <!-- Проводка -->
+          <tr data-cat="Проводка"><td>Прокладка кабеля в гофре</td><td class="td-unit">м.п.</td><td class="td-price">от 150 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Проводка"><td>Прокладка кабеля в кабель-канале</td><td class="td-unit">м.п.</td><td class="td-price">от 180 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Проводка"><td>Открытая проводка</td><td class="td-unit">м.п.</td><td class="td-price">от 150 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Проводка"><td>Штробление бетона</td><td class="td-unit">м.п.</td><td class="td-price">от 400 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Проводка"><td>Штробление кирпича</td><td class="td-unit">м.п.</td><td class="td-price">от 300 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Проводка"><td>Штробление газоблока</td><td class="td-unit">м.п.</td><td class="td-price">от 200 ₽</td><td class="td-note"></td></tr>
+          <!-- Розетки и выключатели -->
+          <tr data-cat="Розетки и выключатели"><td>Перенос розетки</td><td class="td-unit">шт</td><td class="td-price">от 1 500 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Розетки и выключатели"><td>Установка розетки (готовое место)</td><td class="td-unit">шт</td><td class="td-price">от 300 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Розетки и выключатели"><td>Установка выключателя (готовое место)</td><td class="td-unit">шт</td><td class="td-price">от 300 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Розетки и выключатели"><td>Установка силовой розетки (плита, духовка, бойлер)</td><td class="td-unit">шт</td><td class="td-price">от 1 000 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Розетки и выключатели"><td>Интернет / ТВ розетка</td><td class="td-unit">шт</td><td class="td-price">от 500 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Розетки и выключатели"><td>Алмазное отверстие</td><td class="td-unit">шт</td><td class="td-price">от 400 ₽</td><td class="td-note"></td></tr>
+          <!-- Освещение -->
+          <tr data-cat="Освещение"><td>Установка люстры</td><td class="td-unit">шт</td><td class="td-price">от 1 500 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Освещение"><td>Установка бра</td><td class="td-unit">шт</td><td class="td-price">от 1 000 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Освещение"><td>Монтаж точечного светильника</td><td class="td-unit">шт</td><td class="td-price">от 500 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Освещение"><td>Монтаж LED-ленты</td><td class="td-unit">м.п.</td><td class="td-price">от 400 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Освещение"><td>Подключение вентилятора</td><td class="td-unit">шт</td><td class="td-price">от 1 500 ₽</td><td class="td-note"></td></tr>
+          <!-- Щиток -->
+          <tr data-cat="Щиток"><td>Сборка щита до 12 модулей</td><td class="td-unit">фикс</td><td class="td-price">от 8 000 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Щиток"><td>Установка автомата</td><td class="td-unit">шт</td><td class="td-price">от 500 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Щиток"><td>Установка УЗО / дифавтомата</td><td class="td-unit">точка</td><td class="td-price">от 1 000 ₽</td><td class="td-note"></td></tr>
+          <!-- Тёплый пол -->
+          <tr data-cat="Тёплый пол"><td>Монтаж тёплого пола (электрический)</td><td class="td-unit">м²</td><td class="td-price">от 500 ₽</td><td class="td-note">без учёта материала</td></tr>
+          <tr data-cat="Тёплый пол"><td>Подключение тёплого пола к терморегулятору</td><td class="td-unit">шт</td><td class="td-price">от 1 000 ₽</td><td class="td-note"></td></tr>
+          <!-- Оборудование -->
+          <tr data-cat="Оборудование"><td>Подключение варочной панели / духового шкафа</td><td class="td-unit">шт</td><td class="td-price">от 1 500 ₽</td><td class="td-note"></td></tr>
+          <tr data-cat="Оборудование"><td>Подключение кондиционера</td><td class="td-unit">шт</td><td class="td-price">от 2 500 ₽</td><td class="td-note"></td></tr>
+          <!-- Другое -->
+          <tr data-cat="Другое"><td>Поиск неисправности</td><td class="td-unit">фикс</td><td class="td-price">от 2 000 ₽</td><td class="td-note"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacts">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:16px">
+          <span class="logo-bolt">⚡</span>
+          <span class="logo-black">BLACK</span><span class="logo-volt">VOLT</span>
         </div>
-    </header>
+        <p>Профессиональный электромонтаж в Кемерово и области. Работаем официально, даём гарантию.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <p><i class="fas fa-map-marker-alt"></i> ул. Спортивная 28, офис 501</p>
+        <a href="tel:+79990000000"><i class="fas fa-phone"></i> +7 (999) 000-00-00</a>
+        <a href="mailto:yegor2297@gmail.com"><i class="fas fa-envelope"></i> yegor2297@gmail.com</a>
+      </div>
+      <div class="footer-col">
+        <h4>Мессенджеры</h4>
+        <a href="https://t.me/username" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        <a href="https://wa.me/79990000000" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Black-Volt. Все права защищены.</span>
+      <span>Кемерово</span>
+    </div>
+  </div>
+</footer>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>ЭЛЕКТРОМОНТАЖ <br><span>ЛЮБОЙ СЛОЖНОСТИ</span></h1>
-            <p>Профессиональный подход. Гарантия качества. Современные решения.</p>
-            
-            <!-- Мессенджеры в ряд -->
-            <div class="messenger-group">
-                <!-- ЗАМЕНИ НОМЕР ТЕЛЕФОНА НИЖЕ В href="tel:..." и в тексте -->
-                <a href="tel:+79990000000" class="btn-messenger btn-phone">
-                    <i class="fas fa-phone-alt"></i> Позвонить Максу
-                </a>
-                <!-- ЗАМЕНИ НОМЕР WHATSAPP (без +) -->
-                <a href="https://wa.me/79990000000" target="_blank" class="btn-messenger btn-wa">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                <!-- Вставь свой юзернейм телеграм вместо username -->
-                <a href="https://t.me/username" target="_blank" class="btn-messenger btn-tg">
-                    <i class="fab fa-telegram-plane"></i> Telegram
-                </a>
-            </div>
+<script>
+  // Cursor glow
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
 
-            <div class="hero-address">
-                <i class="fas fa-map-marker-alt" style="color: var(--primary-gold);"></i>
-                г. Кемерово, ул. Спортивная 28, офис 501
-            </div>
-        </div>
-    </section>
+  // Header scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
 
-    <!-- Services -->
-    <section id="services" class="section">
-        <div class="container">
-            <h2 class="section-title">Наши Услуги</h2>
-            <div class="services-grid">
-                <div class="card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Проводка под ключ</h3>
-                    <p>Полная замена электрики в квартирах и домах. Штробление, укладка кабеля, установка подрозетников.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-tools"></i>
-                    <h3>Сборка щитов</h3>
-                    <p>Профессиональная сборка электрощитов любой сложности. Установка автоматов, УЗО, реле напряжения.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Освещение</h3>
-                    <p>Монтаж люстр, бра, точечных светильников и светодиодных лент. Дизайн подсветки.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-plug"></i>
-                    <h3>Розетки и выключатели</h3>
-                    <p>Перенос, замена и установка новых точек. Силовые розетки для плит и духовок.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  // Burger menu
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    burger.querySelector('i').classList.toggle('fa-bars');
+    burger.querySelector('i').classList.toggle('fa-times');
+  });
 
-    <!-- Smart Home -->
-    <section id="smart-home" class="section" style="background: #181818;">
-        <div class="container">
-            <h2 class="section-title">Умный Дом</h2>
-            <div class="services-grid">
-                <div class="card">
-                    <i class="fas fa-video"></i>
-                    <h3>Видеонаблюдение</h3>
-                    <p>Установка камер с доступом через телефон. Контроль безопасности 24/7.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-wifi"></i>
-                    <h3>Датчики и Автоматика</h3>
-                    <p>Датчики движения, протечки, открытия дверей. Сценарии освещения.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-microphone-alt"></i>
-                    <h3>Голосовое управление</h3>
-                    <p>Интеграция с Алисой и другими системами. Управление светом и техникой голосом.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      burger.querySelector('i').classList.add('fa-bars');
+      burger.querySelector('i').classList.remove('fa-times');
+    });
+  });
 
-    <!-- Price List -->
-    <section id="price" class="section">
-        <div class="container">
-            <h2 class="section-title">Прайс-лист</h2>
-            <div class="price-table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Вид работы</th>
-                            <th>Ед.</th>
-                            <th>Цена</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Замена проводки под ключ — 1-комнатная</td>
-                            <td>фикс</td>
-                            <td class="price-col">22 000 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Замена проводки под ключ — 2-комнатная</td>
-                            <td>фикс</td>
-                            <td class="price-col">32 000 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Замена проводки под ключ — 3-комнатная</td>
-                            <td>фикс</td>
-                            <td class="price-col">45 000 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Силовая розетка (плита, духовка)</td>
-                            <td>шт</td>
-                            <td class="price-col">700 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Прокладка кабеля в штробе</td>
-                            <td>м.п.</td>
-                            <td class="price-col">150 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Прокладка кабеля в гофре / кабель-канале</td>
-                            <td>м.п.</td>
-                            <td class="price-col">150 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Штробление в бетоне</td>
-                            <td>м.п.</td>
-                            <td class="price-col">300 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Установка автомата / УЗО</td>
-                            <td>шт</td>
-                            <td class="price-col">700 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Установка и сборка щита</td>
-                            <td>фикс</td>
-                            <td class="price-col">2 000 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Подключение кабеля к щиту</td>
-                            <td>точка</td>
-                            <td class="price-col">1 500 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Перенос розетки</td>
-                            <td>шт</td>
-                            <td class="price-col">2 000 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Установка розетки / выключателя с нуля (штробление)</td>
-                            <td>шт</td>
-                            <td class="price-col">1 500 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Замена розетки / выключателя (готовое место)</td>
-                            <td>шт</td>
-                            <td class="price-col">400 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Установка люстры</td>
-                            <td>шт</td>
-                            <td class="price-col">1 200 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Установка бра</td>
-                            <td>шт</td>
-                            <td class="price-col">800 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Установка точечного светильника</td>
-                            <td>шт</td>
-                            <td class="price-col">600 ₽</td>
-                        </tr>
-                        <tr>
-                            <td>Светодиодная лента</td>
-                            <td>м.п.</td>
-                            <td class="price-col">250 ₽</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+  // Particles
+  const particlesEl = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.width = p.style.height = (Math.random() * 3 + 1) + 'px';
+    p.style.animationDuration = (Math.random() * 10 + 8) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    particlesEl.appendChild(p);
+  }
 
-    <!-- Footer -->
-    <footer id="contacts">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h4>Black-Volt</h4>
-                    <p>Профессиональный электромонтаж в Кемерово и области.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Контакты</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> г. Кемерово, ул. Спортивная 28, офис 501</p>
-                    <!-- ЗАМЕНИ НОМЕР -->
-                    <p><i class="fas fa-phone"></i> <a href="tel:+79990000000">+7 (999) 000-00-00 (Макс)</a></p>
-                    <p><i class="fas fa-envelope"></i> yegor2297@gmail.com</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Мы в соцсетях</h4>
-                    <a href="https://t.me/username">Telegram</a>
-                    <a href="https://wa.me/79990000000">WhatsApp</a>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2024 Black-Volt. Все права защищены.
-            </div>
-        </div>
-    </footer>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-    <script>
-        // Мобильное меню
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links li');
+  reveals.forEach(el => observer.observe(el));
 
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('nav-active');
-            
-            // Анимация ссылок
-            navLinks.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                }
-            });
-            
-            // Анимация бургера
-            burger.classList.toggle('toggle');
-        });
+  // Price tabs filter
+  const tabs = document.querySelectorAll('.price-tab');
+  const rows = document.querySelectorAll('#priceBody tr');
 
-        // Плавный скролл
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                nav.classList.remove('nav-active'); // Закрыть меню при клике
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.cat;
+      rows.forEach(row => {
+        row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
