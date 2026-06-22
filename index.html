@@ -699,6 +699,321 @@
     transform: translateY(0);
   }
 
+  /* ===== PORTFOLIO ===== */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .portfolio-item {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--card);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.4s var(--ease);
+  }
+
+  .portfolio-item:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  }
+
+  .portfolio-item .pf-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    background: linear-gradient(135deg, rgba(232,183,48,0.05) 0%, rgba(232,183,48,0.01) 100%);
+  }
+
+  .portfolio-item .pf-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5,5,5,0.9) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+  }
+
+  .portfolio-item:hover .pf-overlay { opacity: 1; }
+
+  .pf-overlay h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .pf-overlay p {
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  .pf-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(232,183,48,0.12);
+    color: var(--gold);
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+
+  /* ===== PROCESS ===== */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232,183,48,0.3), transparent);
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+
+  .step-num {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s var(--ease);
+  }
+
+  .process-step:hover .step-num {
+    border-color: var(--gold);
+    box-shadow: 0 0 30px rgba(232,183,48,0.15);
+    transform: scale(1.08);
+  }
+
+  .step-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* ===== REVIEWS ===== */
+  .reviews-track-wrap {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 32px;
+  }
+
+  .reviews-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s var(--ease);
+  }
+
+  .review-card {
+    min-width: calc(33.333% - 11px);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    flex-shrink: 0;
+    transition: all 0.4s var(--ease);
+  }
+
+  .review-card:hover {
+    border-color: var(--border-hover);
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .review-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #050505;
+  }
+
+  .review-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  .review-date {
+    font-size: 12px;
+    color: var(--gray2);
+  }
+
+  .review-stars {
+    color: var(--gold);
+    font-size: 13px;
+    margin-bottom: 14px;
+    letter-spacing: 2px;
+  }
+
+  .review-text {
+    font-size: 14px;
+    color: var(--white-dim);
+    line-height: 1.75;
+  }
+
+  .reviews-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .reviews-nav button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--white-dim);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reviews-nav button:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(232,183,48,0.06);
+  }
+
+  /* ===== FAQ ===== */
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s var(--ease);
+  }
+
+  .faq-item.active {
+    border-color: var(--border-hover);
+  }
+
+  .faq-q {
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    transition: color 0.25s var(--ease);
+  }
+
+  .faq-q:hover { color: var(--gold); }
+
+  .faq-q i {
+    font-size: 12px;
+    color: var(--gold);
+    transition: transform 0.35s var(--ease);
+  }
+
+  .faq-item.active .faq-q i { transform: rotate(180deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease), padding 0.3s var(--ease);
+  }
+
+  .faq-item.active .faq-a {
+    max-height: 300px;
+  }
+
+  .faq-a-inner {
+    padding: 0 28px 22px;
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+
+  /* ===== MAP ===== */
+  .map-wrap {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-top: 24px;
+    aspect-ratio: 16/7;
+    background: var(--card);
+  }
+
+  .map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(0.6) contrast(1.1);
+    transition: filter 0.4s var(--ease);
+  }
+
+  .map-wrap:hover iframe {
+    filter: grayscale(0) contrast(1);
+  }
+
   /* ===== MOBILE MENU ===== */
   @media (max-width: 900px) {
     header { padding: 0 20px; }
@@ -729,6 +1044,11 @@
     .grid-3 { grid-template-columns: 1fr; }
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
 
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .process-steps::before { display: none; }
+    .review-card { min-width: calc(50% - 8px); }
+
     .hero { padding: 100px 20px 60px; }
     .hero h1 { letter-spacing: -1px; }
 
@@ -746,6 +1066,9 @@
 
   @media (max-width: 480px) {
     .grid-4 { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .review-card { min-width: 100%; }
     .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .stat-num { font-size: 34px; }
     .hero h1 { letter-spacing: -1px; }
@@ -765,8 +1088,10 @@
   <nav id="nav">
     <a href="#home">Главная</a>
     <a href="#services">Услуги</a>
+    <a href="#portfolio">Работы</a>
     <a href="#smart">Умный дом</a>
     <a href="#price">Прайс</a>
+    <a href="#faq">FAQ</a>
     <a href="#contacts">Контакты</a>
   </nav>
   <div class="burger" id="burger"><i class="fas fa-bars"></i></div>
@@ -866,6 +1191,94 @@
   </div>
 </section>
 
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section">
+  <div class="section-eyebrow reveal">Наши работы</div>
+  <h2 class="section-title reveal">Портфо<span>лио</span></h2>
+  <p class="section-sub reveal">Каждый объект — индивидуальный подход и внимание к деталям.</p>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-item reveal">
+      <div class="pf-placeholder">⚡</div>
+      <div class="pf-overlay">
+        <span class="pf-tag">Проводка</span>
+        <h4>Квартира в ЖК Новый</h4>
+        <p>Полная замена электрики, 3 комнаты</p>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <div class="pf-placeholder">🏠</div>
+      <div class="pf-overlay">
+        <span class="pf-tag">Щиток</span>
+        <h4>Частный дом</h4>
+        <p>Сборка щита на 24 модуля</p>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <div class="pf-placeholder">💡</div>
+      <div class="pf-overlay">
+        <span class="pf-tag">Освещение</span>
+        <h4>Кухня-гостиная</h4>
+        <p>Точечный свет + LED-подсветка</p>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <div class="pf-placeholder">🔌</div>
+      <div class="pf-overlay">
+        <span class="pf-tag">Оборудование</span>
+        <h4>Квартира в новостройке</h4>
+        <p>Подключение плиты и духовки</p>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <div class="pf-placeholder">📹</div>
+      <div class="pf-overlay">
+        <span class="pf-tag">Умный дом</span>
+        <h4>Коттедж</h4>
+        <p>Видеонаблюдение 4 камеры</p>
+      </div>
+    </div>
+    <div class="portfolio-item reveal">
+      <div class="pf-placeholder">🏢</div>
+      <div class="pf-overlay">
+        <span class="pf-tag">Коммерция</span>
+        <h4>Офис центр</h4>
+        <p>Электромонтаж на 200 м²</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="section-eyebrow reveal">Как мы работаем</div>
+  <h2 class="section-title reveal">Простой и прозрачный <span>процесс</span></h2>
+  <p class="section-sub reveal">От заявки до сдачи — всё прозрачно и в срок.</p>
+
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <h4 class="step-title">Заявка</h4>
+      <p class="step-desc">Позвоните или напишите. Обсудим задачу и подъедем на осмотр.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">02</div>
+      <h4 class="step-title">Смета</h4>
+      <p class="step-desc">Составим подробную смету с фиксированной ценой. Без доплат.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">03</div>
+      <h4 class="step-title">Работа</h4>
+      <p class="step-desc">Выполняем монтаж аккуратно и в оговорённые сроки.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">04</div>
+      <h4 class="step-title">Гарантия</h4>
+      <p class="step-desc">Сдаём объект, предоставляем гарантию и документы.</p>
+    </div>
+  </div>
+</section>
+
 <!-- SMART HOME -->
 <div id="smart" class="smart-section section-full">
   <div class="section-inner">
@@ -889,6 +1302,89 @@
     </div>
   </div>
 </div>
+
+<!-- REVIEWS -->
+<section class="section">
+  <div class="section-eyebrow reveal">Отзывы</div>
+  <h2 class="section-title reveal">Что говорят <span>клиенты</span></h2>
+  <p class="section-sub reveal">Более 200 довольных клиентов по всей Кемеровской области.</p>
+
+  <div class="reviews-track-wrap reveal">
+    <div class="reviews-track" id="reviewsTrack">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">А</div>
+          <div>
+            <div class="review-name">Алексей М.</div>
+            <div class="review-date">Май 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Заменили всю проводку в трёхкомнатной квартире. Работа чистая, в срок. Рекомендую!</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">О</div>
+          <div>
+            <div class="review-name">Ольга К.</div>
+            <div class="review-date">Апрель 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Собрали щиток и провели свет в мастерскую. Всё аккуратно, цены адекватные.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">Д</div>
+          <div>
+            <div class="review-name">Дмитрий В.</div>
+            <div class="review-date">Март 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Подключили видеонаблюдение на даче. Камеры работают стабильно, доступ через телефон — удобно.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">Е</div>
+          <div>
+            <div class="review-name">Елена С.</div>
+            <div class="review-date">Февраль 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Устанавливали LED-подсветку на кухне. Выглядит шикарно! Спасибо за работу.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">И</div>
+          <div>
+            <div class="review-name">Игорь П.</div>
+            <div class="review-date">Январь 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Электромонтаж в офисе на 150 м². Всё сделали за неделю, документы предоставили.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">Н</div>
+          <div>
+            <div class="review-name">Наталья Р.</div>
+            <div class="review-date">Декабрь 2024</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Вызывали для поиска неисправности. Нашли за 20 минут, починили быстро. Профессионалы!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-nav">
+    <button onclick="moveReviews(-1)"><i class="fas fa-arrow-left"></i></button>
+    <button onclick="moveReviews(1)"><i class="fas fa-arrow-right"></i></button>
+  </div>
+</section>
 
 <!-- PRICE -->
 <section id="price" class="section">
@@ -957,6 +1453,40 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="section-eyebrow reveal">Вопросы и ответы</div>
+  <h2 class="section-title reveal">Часто задаваемые <span>вопросы</span></h2>
+  <p class="section-sub reveal">Не нашли ответ? Напишите нам — ответим в течение часа.</p>
+
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q">Какая гарантия на работы?<i class="fas fa-chevron-down"></i></div>
+      <div class="faq-a"><div class="faq-a-inner">Предоставляем гарантию от 2 лет на все виды работ. Гарантийный талон и чек выдаются после сдачи объекта.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Выезд бесплатный?<i class="fas fa-chevron-down"></i></div>
+      <div class="faq-a"><div class="faq-a-inner">Да, выезд и оценка работ бесплатны по Кемерово. При согласии на работу — стоимость включена в смету.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Сколько времени занимает замена проводки?<i class="fas fa-chevron-down"></i></div>
+      <div class="faq-a"><div class="faq-a-inner">Зависит от объёма. Однокомнатная квартира — 3-5 дней. Трёхкомнатная — 5-8 дней. Точные сроки после осмотра.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Какие документы вы предоставляете?<i class="fas fa-chevron-down"></i></div>
+      <div class="faq-a"><div class="faq-a-inner">Договор, смета, акт выполненных работ, гарантийный талон. Работаем официально.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Можно ли оплатить картой?<i class="fas fa-chevron-down"></i></div>
+      <div class="faq-a"><div class="faq-a-inner">Да, принимаем наличные, переводы и оплату картой. Без предоплаты — оплата поэтапно или после сдачи.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Вы работаете в районах области?<i class="fas fa-chevron-down"></i></div>
+      <div class="faq-a"><div class="faq-a-inner">Да, работаем по всей Кемеровской области. Выезд в районы — по договорённости. Уточняйте по телефону.</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer id="contacts">
   <div class="footer-inner">
@@ -979,6 +1509,9 @@
         <a href="https://t.me/username" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
         <a href="https://wa.me/79990000000" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
+    </div>
+    <div class="map-wrap reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43468.28675462265!2d86.069245!3d55.354187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x432af918bb17d993%3A0x8e9068d80c67a733!2z0YPQuy4g4IKW4IKT4IOK4IOKI4IOQIiwg0JrQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsw!5e0!3m2!1sru!2sru!4v1700000000000!5m2!1sru!2sru" allowfullscreen="" loading="lazy"></iframe>
     </div>
     <div class="footer-bottom">
       <span>© 2025 Black-Volt. Все права защищены.</span>
@@ -1084,6 +1617,28 @@
       card.style.setProperty('--mouse-y', y + '%');
     });
   });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!wasActive) item.classList.add('active');
+    });
+  });
+
+  // Reviews carousel
+  let reviewPos = 0;
+  const reviewTrack = document.getElementById('reviewsTrack');
+  function moveReviews(dir) {
+    const cards = reviewTrack.children;
+    const cardWidth = cards[0].offsetWidth + 16;
+    const visible = window.innerWidth > 900 ? 3 : window.innerWidth > 600 ? 2 : 1;
+    const maxPos = Math.max(0, cards.length - visible);
+    reviewPos = Math.max(0, Math.min(maxPos, reviewPos + dir));
+    reviewTrack.style.transform = `translateX(-${reviewPos * cardWidth}px)`;
+  }
 
   // Counter animation
   const counters = document.querySelectorAll('.stat-num');
